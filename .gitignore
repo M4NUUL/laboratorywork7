@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Tasks files
+*.pdf
+*.doc
+*.docx
+
