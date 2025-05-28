@@ -17,23 +17,14 @@ int main()
    case 1:
    {
       int depth;
-      cout << "Введите глубину рекурсии для треугольника Сперлинского (0-6): ";
+      cout << "Введите глубину рекурсии для треугольника Сперлинского: ";
       cin >> depth;
       if (depth < 0)
       {
          cout << "Глубина должна быть от 0." << endl;
          return 1;
       }
-      ofstream svg("sierpinski.svg");
-      if (!svg)
-      {
-         cerr << "Не удалось создать файл sierpinski.svg\n";
-         return 1;
-      }
-      sierpinski(svg, 400, 50, 50, 650, 750, 650, depth);
-      svg << "</svg>\n";
-      svg.close();
-      cout << "Треугольник Сперлинского сохранен в файл sierpinski.svg" << endl;
+      drawing(depth);
       break;
    }
    case 2:

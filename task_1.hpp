@@ -37,29 +37,18 @@ void sierpinski(ofstream &svg, double x1, double y1, double x2, double y2, doubl
     }
 }
 
-int main()
-{
-    // параметры полотна SVG
+// функция для рисования треугольника Сперинского и сохранения SVG
+void drawing(int depth) {
     const int width = 800;
     const int height = 700;
-    const int depth = 3; // глубина рекурсии: можно менять (обычно 0–6)
-
-    // открываем файл для записи
     ofstream svg("sierpinski.svg");
-    if (!svg)
-    {
+    if (!svg) {
         cerr << "не удалось создать файл sierpinski.svg\n";
-        return 1;
+        return;
     }
-
-    // заголовок SVG
     svg << "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
-    svg << "<svg xmlns=\"http://www.w3.org/2000/svg\" "
-           "width=\""
-        << width << "\" height=\"" << height << "\">\n";
+    svg << "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" << width << "\" height=\"" << height << "\">\n";
     svg << "<rect width=\"100%\" height=\"100%\" fill=\"white\" />\n";
-
-    // координаты вершин большого равностороннего треугольника
     double side = width * 0.85;
     double x1 = (width - side) / 2.0;
     double y1 = height - 50;
@@ -67,14 +56,8 @@ int main()
     double y2 = height - 50;
     double x3 = x1 + side / 2.0;
     double y3 = height - 50 - side * sqrt(3) / 2.0;
-
-    // рисуем треугольник Сперинского
     sierpinski(svg, x1, y1, x2, y2, x3, y3, depth);
-
-    // конец SVG
     svg << "</svg>\n";
     svg.close();
-
     cout << "готово! откройте файл sierpinski.svg в браузере.\n";
-    return 0;
 }
