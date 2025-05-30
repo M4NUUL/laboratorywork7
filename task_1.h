@@ -39,25 +39,25 @@ void sierpinski(ofstream &svg, double x1, double y1, double x2, double y2, doubl
 
 // функция для рисования треугольника Сперинского и сохранения SVG
 void drawing(int depth) {
-    const int width = 800;
-    const int height = 700;
-    ofstream svg("sierpinski.svg");
-    if (!svg) {
+    const int width = 800; //Ширина SVG-изображения
+    const int height = 700; // высота SVG-изображения
+    ofstream svg("sierpinski.svg"); // создаём файл SVG
+    if (!svg) { //Ошибка открытия файла
         cerr << "не удалось создать файл sierpinski.svg\n";
         return;
     }
-    svg << "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
-    svg << "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" << width << "\" height=\"" << height << "\">\n";
-    svg << "<rect width=\"100%\" height=\"100%\" fill=\"white\" />\n";
-    double side = width * 0.85;
-    double x1 = (width - side) / 2.0;
-    double y1 = height - 50;
-    double x2 = x1 + side;
-    double y2 = height - 50;
-    double x3 = x1 + side / 2.0;
-    double y3 = height - 50 - side * sqrt(3) / 2.0;
-    sierpinski(svg, x1, y1, x2, y2, x3, y3, depth);
-    svg << "</svg>\n";
-    svg.close();
+    svg << "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"; // xml-заголовок
+    svg << "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" << width << "\" height=\"" << height << "\">\n"; //Открываем тег <svg>
+    svg << "<rect width=\"100%\" height=\"100%\" fill=\"white\" />\n"; // белый фон
+    double side = width * 0.85; //вычисляем длину стороны
+    double x1 = (width - side) / 2.0; // x первой вершины
+    double y1 = height - 50; // y первой вершины
+    double x2 = x1 + side; //x второй вершины
+    double y2 = height - 50; // y второй вершины
+    double x3 = x1 + side / 2.0; // x третьей вершины
+    double y3 = height - 50 - side * sqrt(3) / 2.0; //y третьей вершины
+    sierpinski(svg, x1, y1, x2, y2, x3, y3, depth); // рисуем фрактал
+    svg << "</svg>\n"; //Закрываем тег <svg>
+    svg.close(); // закрываем файл
     cout << "готово! откройте файл sierpinski.svg в браузере.\n";
 }
