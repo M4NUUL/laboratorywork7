@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "task_1.hpp"
-#include "task_2.hpp"
-#include "task_3.hpp"
+#include "task_1.h"
+#include "task_2.h"
+#include "task_3.h"
 
 using namespace std;
 
